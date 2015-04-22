@@ -2,12 +2,12 @@
 
 echo "Preparing to compile code..."
 
-	g++ main.cpp dance.cxx -o dance `fltk-config --cxxflags --ldflags`
+	g++ main.cpp dance.cxx -o dance.out `fltk-config --cxxflags --ldflags`
 
 	while true; do
 		read -p "Execute the program now? " yn
 		case $yn in
-			[Yy]* ) ./dance; break;;
+			[Yy]* ) ./dance.out; break;;
 			[Nn]* ) exit;;
 			* ) exit;;
 		esac
