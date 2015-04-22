@@ -1,13 +1,45 @@
 SETUP:
-Step 1: Install Git on the VM by going to the software thing and searching for "Git"
-Step 2: Make sure the git install worked, type "git" into the terminal.  You should see a list of available commands.
-Step 3: Set up git.  You need to give it your name and email before it lets you do anything.  Follow the "setting up git" section here: https://help.github.com/articles/set-up-git/
-Step 4: Type "git clone https://github.com/gregdumb/dancegame.git" into the terminal.  This will make a new folder called "dancegame" and put what I've already done into it.  Yay!
+
+Step 1: Install Git on the VM by going to the 
+        software thing and searching for "Git"
+
+Step 2: Make sure the git install worked, type
+        "git" into the terminal.  You should 
+        see a list of available commands.
+
+Step 3: Set up git.  You need to give it your 
+        name and email before it lets you do 
+        anything.  Follow the "setting up git" 
+        section here: https://help.github.com/articles/set-up-git/
+
+Step 4: Type "git clone https://github.com/gregdumb/dancegame.git"
+        into the terminal.  This will make a 
+        new folder called "dancegame" and put 
+        what I've already done into it.  Yay!
 
 Now change something.  Maybe add a "<yourname> here!" in the Readme.txt, for testing purposes.
 
-When you're done changing something, type "git add Readme.txt".  (To upload all files in the folder, "type git add ./")
-Then enter "git commit -m "Your message here".  The message is required.
-THEN enter "git push".  You will be asked to enter your github username and password.  If it says something like "zero stuff changed" then you did something wrong.
+TO SAVE YOUR CHANGES TO THE REPOSITORY:
 
-To confirm that your commit worked, go to the github page for our project (https://github.com/gregdumb/dancegame) and click on the Readme.txt.  You should see the new line you added!
+Step 1. When you're done changing something, 
+        type "git add FILENAME".  In this 
+        case, it would be "git add Readme.txt".  
+        (To upload all files in the folder, 
+        type "git add ./")
+
+Step 2. Enter "git commit -m "Your message 
+        here".  The message is required.
+
+Step 3. Enter "git push".  You will be asked 
+        to enter your github username and 
+        password.  If it says something like 
+        "all files up to date" then you did 
+        something wrong.  It should say something 
+        like "pushed readme.txt".
+
+To confirm that your commit worked, go to the 
+github page for our project (https://github.com/gregdumb/dancegame)
+and click on the Readme.txt.  You should see 
+the new line you added!  If you don't see your 
+changes, go through the steps again: git add, 
+git commit, and git push.
