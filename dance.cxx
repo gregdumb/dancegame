@@ -2,6 +2,8 @@
 
 #include "dance.h"
 
+Fl_Box *box_background=(Fl_Box *)0;
+
 #include <FL/Fl_JPEG_Image.H>
 static unsigned char idata_background[] =
 {255,216,255,224,0,16,74,70,73,70,0,1,1,1,0,72,0,72,0,0,255,219,0,67,0,3,2,
@@ -2168,13 +2170,17 @@ static unsigned char idata_background[] =
 143,255,217};
 static Fl_JPEG_Image image_background("background.jpg", idata_background);
 
+Fl_Box *box_key=(Fl_Box *)0;
+
 Fl_Double_Window* make_window() {
   Fl_Double_Window* w;
   { Fl_Double_Window* o = new Fl_Double_Window(500, 500, "Dance Game");
     w = o;
-    { Fl_Box* o = new Fl_Box(0, 0, 500, 500);
-      o->image(image_background);
-    } // Fl_Box* o
+    { box_background = new Fl_Box(0, 0, 500, 500);
+      box_background->image(image_background);
+    } // Fl_Box* box_background
+    { box_key = new Fl_Box(210, 410, 80, 80, "0");
+    } // Fl_Box* box_key
     o->end();
   } // Fl_Double_Window* o
   return w;

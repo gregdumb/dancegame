@@ -5,5 +5,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
+extern Fl_Box *box_background;
+extern Fl_Box *box_key;
 Fl_Double_Window* make_window();
 #endif
