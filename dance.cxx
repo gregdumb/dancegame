@@ -4,7 +4,7 @@
 
 Fl_Double_Window* make_window() {
   Fl_Double_Window* w;
-  { Fl_Double_Window* o = new Fl_Double_Window(240, 210);
+  { Fl_Double_Window* o = new Fl_Double_Window(500, 500);
     w = o;
     o->end();
   } // Fl_Double_Window* o

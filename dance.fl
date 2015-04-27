@@ -4,7 +4,8 @@ header_name {.h}
 code_name {.cxx}
 Function {make_window()} {open
 } {
-  Fl_Window {} {open
-    xywh {548 304 240 210} type Double visible
+  Fl_Window {} {
+    label {Dance Game} open selected
+    xywh {284 128 500 500} type Double visible
   } {}
 } 
