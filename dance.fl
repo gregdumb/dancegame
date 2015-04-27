@@ -5,7 +5,11 @@ code_name {.cxx}
 Function {make_window()} {open
 } {
   Fl_Window {} {
-    label {Dance Game} open selected
-    xywh {284 128 500 500} type Double visible
-  } {}
+    label {Dance Game} open
+    xywh {302 147 500 500} type Double visible
+  } {
+    Fl_Box {} {
+      image {res/background.jpg} xywh {0 0 500 500}
+    }
+  }
 } 

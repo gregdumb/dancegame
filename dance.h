@@ -4,5 +4,6 @@
 #define dance_h
 #include <FL/Fl.H>
 #include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Box.H>
 Fl_Double_Window* make_window();
 #endif
