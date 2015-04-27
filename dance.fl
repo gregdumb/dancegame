@@ -6,13 +6,12 @@ Function {make_window()} {open
 } {
   Fl_Window {} {
     label {Dance Game} open
-    xywh {302 147 500 500} type Double visible
+    xywh {295 112 500 500} type Double visible
   } {
     Fl_Box box_background {
-      image {res/background.jpg} xywh {0 0 500 500}
+      xywh {0 0 500 500}
     }
     Fl_Box box_key {
-      label 0
       xywh {210 410 80 80}
     }
   }
