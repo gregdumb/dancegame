@@ -8,10 +8,10 @@ decl {\#include <FL/Fl_JPEG_Image.H>} {public global
 Function {make_window()} {open
 } {
   Fl_Window {} {
-    label {Dance Game} open
+    label {Dance Game} open selected
     xywh {295 112 500 500} type Double color 56 align 0 visible
   } {
-    Fl_Box box_background {selected
+    Fl_Box box_background {
       xywh {0 0 500 400}
     }
     Fl_Box box_key {

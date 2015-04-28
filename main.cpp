@@ -3,13 +3,21 @@
 
 Fl_Double_Window* win;
 
-Fl_JPEG_Image* i_background_lvl1;
+// Creates an array of images we will use for our backgrounds
+Fl_JPEG_Image* i_background [2];
 
 // Sets our image variables to actual image files
 void loadImages()
 {
-	i_background_lvl1 = new Fl_JPEG_Image("res/bg/bg_1.jpg");
-	box_background->image(i_background_lvl1);
+	i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
+	i_background[1] = new Fl_JPEG_Image("res/bg/bg_2.jpg");
+}
+
+// Opens a new level
+// WARNING: level numbers start at 0, not 1!!!
+void loadLevel(int levelNum)
+{
+	box_background->image(i_background[levelNum]);
 }
 
 int main()
@@ -18,6 +26,7 @@ int main()
 	win->show();
 
 	loadImages();
+	loadLevel(0);
 
 	Fl::run();
 }
