@@ -3,10 +3,9 @@
 
 Fl_Double_Window* win;
 
-using namespace std;
-
 Fl_JPEG_Image* i_background_lvl1;
 
+// Sets our image variables to actual image files
 void loadImages()
 {
 	i_background_lvl1 = new Fl_JPEG_Image("res/bg/bg_1.jpg");

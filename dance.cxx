@@ -10,7 +10,9 @@ Fl_Double_Window* make_window() {
   Fl_Double_Window* w;
   { Fl_Double_Window* o = new Fl_Double_Window(500, 500, "Dance Game");
     w = o;
-    { box_background = new Fl_Box(0, 0, 500, 500);
+    o->color((Fl_Color)FL_BLACK);
+    o->align(FL_ALIGN_CENTER);
+    { box_background = new Fl_Box(0, 0, 500, 400);
     } // Fl_Box* box_background
     { box_key = new Fl_Box(210, 410, 80, 80);
     } // Fl_Box* box_key
