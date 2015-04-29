@@ -1,7 +1,7 @@
 #include <iostream>
 #include "dance.h"
 
-Fl_Double_Window* win;
+Game_Window* win;
 
 // Creates an array of images we will use for our backgrounds
 Fl_JPEG_Image* i_background [2];
@@ -14,6 +14,10 @@ Fl_PNG_Image* i_key_right;
 
 int Game_Window::handle(int e)
 {
+	// 12 is the code for FL_KEYDOWN, 65364 is the code for down arrow.
+	if(e == 12 && Fl::event_key() == 65364)
+		std::cout << "Down arrow pressed!" << std::endl;
+
 	return 0;
 }
 
@@ -49,8 +53,8 @@ void loadArrowKeys()
 // WARNING: level numbers start at 0, not 1!!!
 void loadLevel(int levelNum)
 {
-	box_background->image(i_background[levelNum]);
-	box_key->image(i_key_up);
+	win->box_background->image(i_background[levelNum]);
+	win->box_key->image(i_key_up);
 }
 
 int main()

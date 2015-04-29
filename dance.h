@@ -3,13 +3,23 @@
 #ifndef dance_h
 #define dance_h
 #include <FL/Fl.H>
-#include <FL/Fl_Double_Window.H>
 #include <FL/Fl_JPEG_Image.H>
 #include <FL/Fl_PNG_Image.H>
 #include <FL/Fl_GIF_Image.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
-extern Fl_Box *box_background;
-extern Fl_Box *box_key;
-Fl_Double_Window* make_window();
+
+class Game_Window : public Fl_Double_Window {
+  void _Game_Window();
+public:
+  Game_Window(int X, int Y, int W, int H, const char *L = 0);
+  Game_Window(int W, int H, const char *L = 0);
+  Game_Window();
+private:
+  int handle(int e); 
+public:
+  Fl_Box *box_background;
+  Fl_Box *box_key;
+};
+Game_Window* make_window();
 #endif
