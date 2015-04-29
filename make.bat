@@ -1,0 +1,1 @@
+g++ main.cpp dance.cxx -o dance.exe I C:\zSource\FLTK\fltk-1.3.3\ `fltk-config --cxxflags --ldflags` -I C:\zSource\FLTK\fltk-1.3.3\
