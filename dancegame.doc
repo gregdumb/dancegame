@@ -1,0 +1,22 @@
+=TEX
+\documentclass{article}
+\usepackage[margin=.5in,paperwidth=6in,paperheight=5in]{geometry}
+\usepackage{ProofPower,alltt}
+\begin{document}
+
+List of functions: \\
+main(); \\
+make_window(); \\
+handle(); \\
+loadImages(); \\
+loadBackgrounds(); \\
+loadArrowKeys(); \\
+loadGifs(); \\
+loadLevel(int); \\
+setNewTimer(); \\
+timerExpire(); \\
+popupRandomArrow(); \\
+determineKeyPressed(int); \\
+keyPressed(); \\
+
+\end{document}
