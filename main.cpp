@@ -21,20 +21,6 @@ int Game_Window::handle(int e)
 	return 0;
 }
 
-// Sets our image variables to actual image files
-void loadImages()
-{
-	// Backgrounds
-	i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
-	i_background[1] = new Fl_JPEG_Image("res/bg/bg_2.jpg");
-	
-	// Keys
-	i_key_up = new Fl_PNG_Image("res/keys/up_key.png");
-	i_key_down = new Fl_PNG_Image("res/keys/down_key.png");
-	i_key_left = new Fl_PNG_Image("res/keys/left_key.png");
-	i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
-}
-
 void loadBackgrounds()
 {
 	i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
@@ -47,6 +33,23 @@ void loadArrowKeys()
 	i_key_down = new Fl_PNG_Image("res/keys/down_key.png");
 	i_key_left = new Fl_PNG_Image("res/keys/left_key.png");
 	i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
+}
+
+// Sets our image variables to actual image files
+void loadImages()
+{
+	loadBackgrounds();
+	loadArrowKeys();
+
+	// Backgrounds
+	//i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
+	//i_background[1] = new Fl_JPEG_Image("res/bg/bg_2.jpg");
+	
+	// Keys
+	//i_key_up = new Fl_PNG_Image("res/keys/up_key.png");
+	//i_key_down = new Fl_PNG_Image("res/keys/down_key.png");
+	//i_key_left = new Fl_PNG_Image("res/keys/left_key.png");
+	//i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
 }
 
 // Opens a new level

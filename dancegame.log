@@ -1,0 +1,188 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.9.18)  1 MAY 2015 17:15
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**dancegame.tex
+(./dancegame.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/mnt/sdb1/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/mnt/sdb1/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/mnt/sdb1/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/home/tc/texmf/tex/latex/pp/ProofPower.sty
+$Revision: 1.21 $ $Date: 2011/08/06 15:52:29 $
+Package: ProofPower 
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \emptyset on input line 9.
+\ft@strutbox=\box26
+\tabstop=\dimen111
+\ftlmargin=\dimen112
+\ftrmargin=\dimen113
+\ft@width=\dimen114
+\ftlinepenalty=\count90
+\ftaboveboxskip=\skip43
+\ftbelowboxskip=\skip44
+\ftspaceskip=\muskip10
+\@A=\dimen115
+\@B=\dimen116
+\@block=\box27
+\@line=\box28
+\UL@level=\count91
+\UL@t=\count92
+\RM@EX=\dimen117
+\RM@EM=\dimen118
+\endFT@penalty=\count93
+\FR@Name=\box29
+\FR@Above=\box30
+\FR@Below=\box31
+\FR@FullFtwidth=\dimen119
+\FR@LHS=\box32
+\FR@RhsRaise=\dimen120
+\FR@Help=\toks16
+\@oldtabstop=\dimen121
+)
+(/mnt/sdb1/texlive/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+) (./dancegame.aux)
+\openout1 = `dancegame.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(36.135pt, 361.35pt, 36.135pt)
+* v-part:(T,H,B)=(36.135pt, 289.08pt, 36.135pt)
+* \paperwidth=433.62pt
+* \paperheight=361.34999pt
+* \textwidth=361.35pt
+* \textheight=289.08pt
+* \oddsidemargin=-36.135pt
+* \evensidemargin=-36.135pt
+* \topmargin=-73.135pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Overfull \hbox (11.39674pt too wide) in paragraph at lines 22--22
+[]\OT1/cmtt/m/n/10 process: If the event was a keypress, pass it into determine
+KeyPressed.[] 
+ []
+
+[1
+
+{/mnt/sdb1/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (16.6467pt too wide) in paragraph at lines 54--54
+[]\OT1/cmtt/m/n/10 process: Changes the background and dancer images to those c
+orresponding[] 
+ []
+
+[2
+
+]
+Overfull \hbox (0.89684pt too wide) in paragraph at lines 70--70
+[]\OT1/cmtt/m/n/10 process: Calls correctKeyPressed to see if the player had pr
+essed the[] 
+ []
+
+[3
+
+] [4] (./dancegame.aux) ) 
+Here is how much of TeX's memory you used:
+ 1239 strings out of 495025
+ 14128 string characters out of 6181570
+ 69699 words of memory out of 5000000
+ 4503 multiletter control sequences out of 15000+600000
+ 5331 words of font info for 20 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,4n,32p,182b,249s stack positions out of 5000i,500n,10000p,200000b,80000s
+</mnt/sdb1/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmbx12.pfb></mnt/sdb1/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr10.pfb></mnt/sdb1/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
+fb>
+Output written on dancegame.pdf (4 pages, 35265 bytes).
+PDF statistics:
+ 29 PDF objects out of 1000 (max. 8388607)
+ 19 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
