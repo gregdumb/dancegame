@@ -26,6 +26,8 @@ int Game_Window::handle(int e)
 		if(Fl::event_key() == expectedKey)
 			correctKeyPressed = true;
 		else
+			incorrectKeyPressed = true;
+	}
 
 	return 0;
 }
@@ -120,7 +122,7 @@ void setNewTimer()
 
 void timerExpire(void*)
 {
-	if(correctKeyPressed)
+	if(correctKeyPressed && !incorrectKeyPressed)
 		setNewTimer();
 }
 
