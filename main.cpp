@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "dance.h"
 
 Game_Window* win;
@@ -60,6 +62,58 @@ void loadLevel(int levelNum)
 	win->box_key->image(i_key_up);
 }
 
+void popupRandomArrow()
+{
+	// This will be used so we don't get the same arrow twice in a row.
+	static int lastNum = 0;
+
+	// Generate a new random number.
+	int randNum = randNum = rand() % 4 + 1;
+
+	// Do this so we don't get the same arrow
+	// twice in a row.
+	while(randNum == lastNum)
+		randNum = rand() % 4 + 1;
+
+	lastNum = randNum;
+
+	std::cout << randNum << std::endl;
+
+	Fl_PNG_Image* newArrow;
+
+	// Pick a new arrow from the number.
+	if(randNum == 1)
+		newArrow = i_key_up;
+	else if(randNum == 2)
+		newArrow = i_key_down;
+	else if(randNum == 3)
+		newArrow = i_key_left;
+	else
+		newArrow = i_key_right;
+
+	win->box_key->image(newArrow);
+	win->redraw();
+}
+
+void timerExpire(void*);
+
+// Start a new timeout
+void setNewTimer()
+{
+	popupRandomArrow();
+	Fl::add_timeout(1.0, timerExpire);
+}
+
+void timerExpire(void*)
+{
+	setNewTimer();
+}
+
+void initRandomSeed()
+{
+	srand(time(NULL));
+}
+
 int main()
 {
 	win = make_window();
@@ -67,6 +121,9 @@ int main()
 
 	loadImages();
 	loadLevel(0);
+
+	initRandomSeed();
+	setNewTimer();
 
 	Fl::run();
 }
