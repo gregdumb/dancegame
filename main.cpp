@@ -14,15 +14,21 @@ Fl_PNG_Image* i_key_down;
 Fl_PNG_Image* i_key_left;
 Fl_PNG_Image* i_key_right;
 
+// These are used for calculating whether or not the right
+// key was pressed.
 bool correctKeyPressed;
 bool incorrectKeyPressed;
 int expectedKey = 0;
 
+// When any event happens, this is called.  "e" is the code for
+// the type of event.
 int Game_Window::handle(int e)
 {
-	// 12 is the code for FL_KEYDOWN, 65364 is the code for down arrow.
+	// "12" is the code for "a key was pushed down"
 	if(e == 12)
 	{
+		// Compare the pressed key with the key that we 
+		// were supposed to press
 		if(Fl::event_key() == expectedKey)
 			correctKeyPressed = true;
 		else
@@ -51,7 +57,9 @@ void loadGifs()
 	// HUDA PUT YOUR STUFF HERE
 }
 
-// Sets our image variables to actual image files
+// Sets our image variables to actual image files.
+// This will NOT actually set the background of the window
+// to anything, see loadLevel for that.
 void loadImages()
 {
 	loadBackgrounds();
@@ -61,12 +69,15 @@ void loadImages()
 
 // Opens a new level
 // WARNING: level numbers start at 0, not 1!!!
+// This function is mostly empty right now, we need to 
+// fix it so it changes the GIF as well as the background.
 void loadLevel(int levelNum)
 {
 	win->box_background->image(i_background[levelNum]);
-	//win->box_key->image(i_key_up);
 }
 
+// Changes the arrow on the screen.  Completely randomly chosen,
+// but it will never choose the same arrow twice in a row.
 void popupRandomArrow()
 {
 	// This will be used so we don't get the same arrow twice in a row.
@@ -80,6 +91,9 @@ void popupRandomArrow()
 	while(randNum == lastNum)
 		randNum = rand() % 4 + 1;
 
+	// Next cycle, lastNum will equal whatever the randNum was this
+	// cycle.  That way we know what the number was this cycle, 
+	// so we can avoid it next time.
 	lastNum = randNum;
 
 	Fl_PNG_Image* newArrow;
@@ -88,7 +102,8 @@ void popupRandomArrow()
 	if(randNum == 1)
 	{
 		newArrow = i_key_up;
-		expectedKey = 65362;
+		expectedKey = 65362; // These strange numbers are
+				     // the codes for the arrow keys.
 	}
 	else if(randNum == 2)
 	{
@@ -110,6 +125,8 @@ void popupRandomArrow()
 	win->redraw();
 }
 
+// This has to be here so c++ can see it, even though it is
+// defined later.
 void timerExpire(void*);
 
 // Start a new timeout
@@ -120,15 +137,24 @@ void setNewTimer()
 	Fl::add_timeout(1.0, timerExpire);
 }
 
+// When the time to press the key runs out, this will check
+// if we actually pressed it or not.
 void timerExpire(void*)
 {
 	if(correctKeyPressed && !incorrectKeyPressed)
 		setNewTimer();
 }
 
+// For random numbers, c++ needs this, ignore it.
 void initRandomSeed()
 {
 	srand(time(NULL));
+}
+
+// Starts showing the keys
+void beginKeypressSequence(void*)
+{
+	setNewTimer();
 }
 
 int main()
@@ -136,11 +162,18 @@ int main()
 	win = make_window();
 	win->show();
 
+	// Initialize the images
 	loadImages();
+
+	// Load the first level (this is clunky, the main menu 
+	// "play" button should be handling this, not main() ).
 	loadLevel(0);
 
+	// We need this for random numbers, ignore it
 	initRandomSeed();
-	setNewTimer();
+	
+	// Sets timer to start showing the keys
+	Fl::add_timeout(1.0, beginKeypressSequence);
 
 	Fl::run();
 }
