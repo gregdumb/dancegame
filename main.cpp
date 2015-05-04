@@ -14,11 +14,15 @@ Fl_PNG_Image* i_key_down;
 Fl_PNG_Image* i_key_left;
 Fl_PNG_Image* i_key_right;
 
+bool correctKeyPressed;
+bool incorrectKeyPressed;
+int expectedKey = 0;
+
 int Game_Window::handle(int e)
 {
 	// 12 is the code for FL_KEYDOWN, 65364 is the code for down arrow.
-	if(e == 12 && Fl::event_key() == 65364)
-		std::cout << "Down arrow pressed!" << std::endl;
+	if(e == 12 && Fl::event_key() == expectedKey)
+		correctKeyPressed = true;
 
 	return 0;
 }
@@ -42,16 +46,6 @@ void loadImages()
 {
 	loadBackgrounds();
 	loadArrowKeys();
-
-	// Backgrounds
-	//i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
-	//i_background[1] = new Fl_JPEG_Image("res/bg/bg_2.jpg");
-	
-	// Keys
-	//i_key_up = new Fl_PNG_Image("res/keys/up_key.png");
-	//i_key_down = new Fl_PNG_Image("res/keys/down_key.png");
-	//i_key_left = new Fl_PNG_Image("res/keys/left_key.png");
-	//i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
 }
 
 // Opens a new level
@@ -59,7 +53,7 @@ void loadImages()
 void loadLevel(int levelNum)
 {
 	win->box_background->image(i_background[levelNum]);
-	win->box_key->image(i_key_up);
+	//win->box_key->image(i_key_up);
 }
 
 void popupRandomArrow()
@@ -77,19 +71,29 @@ void popupRandomArrow()
 
 	lastNum = randNum;
 
-	std::cout << randNum << std::endl;
-
 	Fl_PNG_Image* newArrow;
 
 	// Pick a new arrow from the number.
 	if(randNum == 1)
+	{
 		newArrow = i_key_up;
+		expectedKey = 65362;
+	}
 	else if(randNum == 2)
+	{
 		newArrow = i_key_down;
+		expectedKey = 65364;
+	}
 	else if(randNum == 3)
+	{
 		newArrow = i_key_left;
+		expectedKey = 65361;
+	}
 	else
+	{
 		newArrow = i_key_right;
+		expectedKey = 65363;
+	}
 
 	win->box_key->image(newArrow);
 	win->redraw();
@@ -100,13 +104,15 @@ void timerExpire(void*);
 // Start a new timeout
 void setNewTimer()
 {
+	correctKeyPressed = false;
 	popupRandomArrow();
 	Fl::add_timeout(1.0, timerExpire);
 }
 
 void timerExpire(void*)
 {
-	setNewTimer();
+	if(correctKeyPressed)
+		setNewTimer();
 }
 
 void initRandomSeed()
