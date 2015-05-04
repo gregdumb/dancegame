@@ -21,8 +21,11 @@ int expectedKey = 0;
 int Game_Window::handle(int e)
 {
 	// 12 is the code for FL_KEYDOWN, 65364 is the code for down arrow.
-	if(e == 12 && Fl::event_key() == expectedKey)
-		correctKeyPressed = true;
+	if(e == 12)
+	{
+		if(Fl::event_key() == expectedKey)
+			correctKeyPressed = true;
+		else
 
 	return 0;
 }
@@ -41,11 +44,17 @@ void loadArrowKeys()
 	i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
 }
 
+void loadGifs()
+{
+	// HUDA PUT YOUR STUFF HERE
+}
+
 // Sets our image variables to actual image files
 void loadImages()
 {
 	loadBackgrounds();
 	loadArrowKeys();
+	loadGifs();
 }
 
 // Opens a new level
