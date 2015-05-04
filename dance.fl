@@ -1,8 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0302 
+version 1.0110 
 header_name {.h} 
 code_name {.cxx}
-decl {\#include <FL/Fl_Double_Window.H>} {private global
+decl {\#include <FL/Fl_Double_Window.H>} {global
 } 
 
 decl {\#include <FL/Fl_JPEG_Image.H>} {public global
@@ -16,16 +16,27 @@ decl {\#include <FL/Fl_GIF_Image.H>} {public global
 
 widget_class Game_Window {
   label {Dance Game} open
-  xywh {177 149 500 500} type Double color 32
+  xywh {521 54 500 530} type Double color 32
   class Fl_Double_Window visible
 } {
-  decl {int handle(int e);} {private local
-  }
+  decl {int handle(int e);} {}
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
   }
   Fl_Box box_key {
     xywh {210 410 80 80}
+  }
+  Fl_Box carlton {
+    xywh {170 47 175 353}
+  }
+  Fl_Box justin {
+    xywh {166 54 135 301}
+  }
+  Fl_Box mj {
+    xywh {110 58 240 317}
+  }
+  Fl_Box snoop {
+    xywh {160 88 150 332}
   }
 } 
 

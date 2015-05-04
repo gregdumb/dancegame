@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <stdlib.h>
 #include <time.h>
 #include "dance.h"
@@ -52,11 +53,67 @@ void loadArrowKeys()
 	i_key_right = new Fl_PNG_Image("res/keys/right_key.png");
 }
 
+const int carlton_N = 24;
+const int justin_N = 25;
+const int mj_N = 9;
+const int snoop_N = 19;
+Fl_GIF_Image* carlton_images[carlton_N]; // frames are 0-23
+Fl_GIF_Image* justin_images[justin_N]; // frames are 0-24
+Fl_GIF_Image* mj_images[mj_N]; // frames are 0-8
+Fl_GIF_Image* snoop_images[snoop_N]; // frames are 0-18
+
 void loadGifs()
 {
-	// HUDA PUT YOUR STUFF HERE
+     for(int i = 0; i < carlton_N; i++)
+     {
+       std::ostringstream oss;
+       oss << "res/dancers/carlton/carlton" << i << ".gif";
+       carlton_images[i] = new Fl_GIF_Image(oss.str().c_str());
+     }
+
+     for(int i = 0; i < justin_N; i++)
+     {
+       std::ostringstream oss;
+       oss << "res/dancers/justin/justin" << i << ".gif";
+       justin_images[i] = new Fl_GIF_Image(oss.str().c_str());
+     }
+
+     for(int i = 0; i < mj_N; i++)
+     {
+       std::ostringstream oss;
+       oss << "res/dancers/michael/mj" << i << ".gif";
+       mj_images[i] = new Fl_GIF_Image(oss.str().c_str());
+     }
+
+     for(int i = 0; i < snoop_N; i++)
+     {
+       std::ostringstream oss;
+       oss << "res/dancers/snoop/snoop" << i << ".gif";
+       snoop_images[i] = new Fl_GIF_Image(oss.str().c_str());
+     }
+ 
 }
 
+void animate_carlton(void*)
+{
+     static int i = 0;
+     i = (i + 1) % carlton_N;
+}
+void animate_justin(void*)
+{
+     static int i = 0;
+     i = (i + 1) % justin_N;
+}
+void animate_mj(void*)
+{
+     static int i = 0;
+     i = (i + 1) % mj_N;
+}
+void animate_snoop(void*)
+{
+     static int i = 0;
+     i = (i + 1) % snoop_N;
+}
 // Sets our image variables to actual image files.
 // This will NOT actually set the background of the window
 // to anything, see loadLevel for that.
@@ -161,6 +218,7 @@ int main()
 {
 	win = make_window();
 	win->show();
+        loadGifs();
 
 	// Initialize the images
 	loadImages();
