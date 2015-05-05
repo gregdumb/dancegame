@@ -114,22 +114,31 @@ void animate_carlton(void*)
      game_win->carlton->image(carlton_images[i]);
      game_win->carlton->parent()->redraw();
      i = (i + 1) % carlton_N;
-     Fl::repeat_timeout(1.0/2,animate_carlton);
+     Fl::repeat_timeout(.05,animate_carlton);
 }
 void animate_justin(void*)
 {
      static int i = 0;
+     game_win->justin->image(justin_images[i]);
+     game_win->justin->parent()->redraw();
      i = (i + 1) % justin_N;
+     Fl::repeat_timeout(.05,animate_justin);
 }
 void animate_mj(void*)
 {
      static int i = 0;
+     game_win->mj->image(mj_images[i]);
+     game_win->mj->parent()->redraw();
      i = (i + 1) % mj_N;
+     Fl::repeat_timeout(.05,animate_mj);
 }
 void animate_snoop(void*)
 {
      static int i = 0;
+     game_win->snoop->image(snoop_images[i]);
+     game_win->snoop->parent()->redraw();
      i = (i + 1) % snoop_N;
+     Fl::repeat_timeout(.05,animate_snoop);
 }
 // Sets our image variables to actual image files.
 // This will NOT actually set the background of the window
@@ -149,6 +158,9 @@ void loadLevel(int levelNum)
 {
 	game_win->box_background->image(i_background[levelNum]);
 	Fl::add_timeout(0,animate_carlton);
+	Fl::add_timeout(10,animate_justin);
+	Fl::add_timeout(20,animate_mj);
+	Fl::add_timeout(30,animate_snoop);
 }
 
 // Changes the arrow on the screen.  Completely randomly chosen,
