@@ -111,7 +111,10 @@ void loadGifs()
 void animate_carlton(void*)
 {
      static int i = 0;
+     game_win->carlton->image(carlton_images[i]);
+     game_win->carlton->parent()->redraw();
      i = (i + 1) % carlton_N;
+     Fl::repeat_timeout(1.0/2,animate_carlton);
 }
 void animate_justin(void*)
 {
@@ -145,6 +148,7 @@ void loadImages()
 void loadLevel(int levelNum)
 {
 	game_win->box_background->image(i_background[levelNum]);
+	Fl::add_timeout(0,animate_carlton);
 }
 
 // Changes the arrow on the screen.  Completely randomly chosen,
