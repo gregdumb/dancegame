@@ -6,6 +6,8 @@
 #include <FL/Fl_JPEG_Image.H>
 #include <FL/Fl_PNG_Image.H>
 #include <FL/Fl_GIF_Image.H>
+#include <FL/fl_draw.H>
+void loadGameWindow(); 
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
@@ -18,7 +20,6 @@ public:
   Game_Window();
 private:
   int handle(int e); 
-  void draw(); 
 public:
   Fl_Box *box_background;
   Fl_Box *box_key;
@@ -30,8 +31,10 @@ private:
   inline void cb_Quit_i(Fl_Button*, void*);
   static void cb_Quit(Fl_Button*, void*);
 };
-extern Fl_Double_Window *Main;
 extern Fl_Double_Window *Help;
 #include <FL/Fl_Output.H>
-Game_Window* make_window();
+Fl_Double_Window* make_help_window();
+Game_Window* make_game_window();
+extern Fl_Double_Window *Main;
+Fl_Double_Window* make_menu_window();
 #endif

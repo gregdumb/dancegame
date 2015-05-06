@@ -1,11 +1,13 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-#include <FL/fl_draw.H>
+//#include <FL/fl_draw.H>
 #include <time.h>
 #include "dance.h"
 
-Game_Window* win;
+Game_Window* game_win;
+Fl_Double_Window* menu_win;
+Fl_Double_Window* help_win;
 
 // Creates an array of images we will use for our backgrounds
 Fl_JPEG_Image* i_background [2];
@@ -131,7 +133,7 @@ void loadImages()
 // fix it so it changes the GIF as well as the background.
 void loadLevel(int levelNum)
 {
-	win->box_background->image(i_background[levelNum]);
+	game_win->box_background->image(i_background[levelNum]);
 }
 
 // Changes the arrow on the screen.  Completely randomly chosen,
@@ -179,8 +181,8 @@ void popupRandomArrow()
 		expectedKey = 65363;
 	}
 
-	win->box_key->image(newArrow);
-	win->redraw();
+	game_win->box_key->image(newArrow);
+	game_win->redraw();
 }
 
 // This has to be here so c++ can see it, even though it is
@@ -215,24 +217,40 @@ void beginKeypressSequence(void*)
 	setNewTimer();
 }
 
+void loadGameWindow()
+{
+	loadImages();
+	loadLevel(0);
+
+	game_win->show();
+
+	Fl::add_timeout(1.0, beginKeypressSequence);
+}
+
 int main()
 {
-	win = make_window();
-	win->show();
-        loadGifs();
+	game_win = make_game_window();
+	//game_win->show();
+
+	menu_win = make_menu_window();
+	menu_win->show();
+
+	help_win = make_help_window();
+
+        //loadGifs();
 
 	// Initialize the images
-	loadImages();
+	//loadImages();
 
 	// Load the first level (this is clunky, the main menu 
 	// "play" button should be handling this, not main() ).
-	loadLevel(0);
+	//loadLevel(0);
 
 	// We need this for random numbers, ignore it
 	initRandomSeed();
 	
 	// Sets timer to start showing the keys
-	Fl::add_timeout(1.0, beginKeypressSequence);
+	//Fl::add_timeout(1.0, beginKeypressSequence);
 
 	Fl::run();
 }

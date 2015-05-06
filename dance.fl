@@ -14,17 +14,18 @@ decl {\#include <FL/Fl_PNG_Image.H>} {public global
 decl {\#include <FL/Fl_GIF_Image.H>} {public global
 } 
 
-decl {\#include <FL/fl_draw.H>} {private local
+decl {\#include <FL/fl_draw.H>} {public global
+} 
+
+decl {void loadGameWindow()} {public global
 } 
 
 widget_class Game_Window {
   label {Dance Game} open
-  xywh {218 185 500 525} type Double color 32 hide
+  xywh {237 155 500 525} type Double color 32 hide
   class Fl_Double_Window
 } {
   decl {int handle(int e);} {private local
-  }
-  decl {void draw()} {private local
   }
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
@@ -47,34 +48,15 @@ widget_class Game_Window {
   Fl_Button {} {
     label Quit
     callback {Main->show();
-//Game_Window::hide();} selected
+//Game_Window::hide();}
     xywh {425 5 70 20} down_box DOWN_BOX color 36 selection_color 43 labelcolor 26
   }
 } 
 
-Function {make_window()} {open return_type {Game_Window*}
+Function {make_help_window()} {open
 } {
-  code {return new Game_Window(500,500,"Dancing Game");} {}
-  Fl_Window Main {open
-    xywh {426 325 240 220} type Double hide
-  } {
-    Fl_Button {} {
-      label {Let's Dance!}
-      callback {//Game_Window::position(200,200);
-//Game_Window::show();
-Main->hide();}
-      xywh {15 155 95 20}
-    }
-    Fl_Button {} {
-      label {Wait, What?}
-      callback {Help->position(200,200);
-Help->show();
-Main->hide();}
-      xywh {125 155 95 20}
-    }
-  }
-  Fl_Window Help {open
-    xywh {523 348 300 250} type Double hide
+  Fl_Window Help {
+    xywh {489 333 300 250} type Double hide
   } {
     Fl_Button {} {
       label {Got It!}
@@ -110,6 +92,35 @@ Help->hide();}
     Fl_Output {} {
       label {or you'll be Booed off stage!}
       xywh {245 171 0 25}
+    }
+  }
+} 
+
+Function {make_game_window()} {open return_type {Game_Window*}
+} {
+  code {return new Game_Window(500,500,"Dancing Game");} {}
+} 
+
+Function {make_menu_window()} {open
+} {
+  Fl_Window Main {
+    label {Main Menu} open
+    xywh {431 358 240 220} type Double visible
+  } {
+    Fl_Button {} {
+      label {Let's Dance!}
+      callback {//Game_Window::position(200,200);
+//Game_Window::show();
+loadGameWindow();
+Main->hide();}
+      xywh {15 155 95 20}
+    }
+    Fl_Button {} {
+      label {Wait, What?}
+      callback {Help->position(200,200);
+Help->show();
+Main->hide();}
+      xywh {125 155 95 20}
     }
   }
 } 

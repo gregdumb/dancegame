@@ -2,7 +2,6 @@
 
 #include "dance.h"
 #include <FL/Fl_Double_Window.H>
-#include <FL/fl_draw.H>
 
 void Game_Window::cb_Quit_i(Fl_Button*, void*) {
   Main->show();
@@ -61,20 +60,6 @@ this->when(FL_WHEN_RELEASE);
 end();
 }
 
-Fl_Double_Window *Main=(Fl_Double_Window *)0;
-
-static void cb_Let(Fl_Button*, void*) {
-  //Game_Window::position(200,200);
-//Game_Window::show();
-Main->hide();
-}
-
-static void cb_Wait(Fl_Button*, void*) {
-  Help->position(200,200);
-Help->show();
-Main->hide();
-}
-
 Fl_Double_Window *Help=(Fl_Double_Window *)0;
 
 static void cb_Got(Fl_Button*, void*) {
@@ -83,17 +68,7 @@ Main->show();
 Help->hide();
 }
 
-Game_Window* make_window() {
-  return new Game_Window(500,500,"Dancing Game");
-  { Main = new Fl_Double_Window(240, 220);
-    { Fl_Button* o = new Fl_Button(15, 155, 95, 20, "Let\'s Dance!");
-      o->callback((Fl_Callback*)cb_Let);
-    } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(125, 155, 95, 20, "Wait, What?");
-      o->callback((Fl_Callback*)cb_Wait);
-    } // Fl_Button* o
-    Main->end();
-  } // Fl_Double_Window* Main
+Fl_Double_Window* make_help_window() {
   { Help = new Fl_Double_Window(300, 250);
     { Fl_Button* o = new Fl_Button(105, 210, 70, 20, "Got It!");
       o->callback((Fl_Callback*)cb_Got);
@@ -114,4 +89,37 @@ Game_Window* make_window() {
     } // Fl_Output* o
     Help->end();
   } // Fl_Double_Window* Help
+  return Help;
+}
+
+Game_Window* make_game_window() {
+  return new Game_Window(500,500,"Dancing Game");
+}
+
+Fl_Double_Window *Main=(Fl_Double_Window *)0;
+
+static void cb_Let(Fl_Button*, void*) {
+  //Game_Window::position(200,200);
+//Game_Window::show();
+loadGameWindow();
+Main->hide();
+}
+
+static void cb_Wait(Fl_Button*, void*) {
+  Help->position(200,200);
+Help->show();
+Main->hide();
+}
+
+Fl_Double_Window* make_menu_window() {
+  { Main = new Fl_Double_Window(240, 220, "Main Menu");
+    { Fl_Button* o = new Fl_Button(15, 155, 95, 20, "Let\'s Dance!");
+      o->callback((Fl_Callback*)cb_Let);
+    } // Fl_Button* o
+    { Fl_Button* o = new Fl_Button(125, 155, 95, 20, "Wait, What?");
+      o->callback((Fl_Callback*)cb_Wait);
+    } // Fl_Button* o
+    Main->end();
+  } // Fl_Double_Window* Main
+  return Main;
 }
