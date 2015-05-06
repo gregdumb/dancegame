@@ -1,8 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0110 
+version 1.0302 
 header_name {.h} 
 code_name {.cxx}
-decl {\#include <FL/Fl_Double_Window.H>} {global
+decl {\#include <FL/Fl_Double_Window.H>} {private global
 } 
 
 decl {\#include <FL/Fl_JPEG_Image.H>} {public global
@@ -14,12 +14,18 @@ decl {\#include <FL/Fl_PNG_Image.H>} {public global
 decl {\#include <FL/Fl_GIF_Image.H>} {public global
 } 
 
+decl {\#include <FL/fl_draw.H>} {private local
+} 
+
 widget_class Game_Window {
   label {Dance Game} open
-  xywh {521 54 500 530} type Double color 32
-  class Fl_Double_Window visible
+  xywh {218 185 500 525} type Double color 32 hide
+  class Fl_Double_Window
 } {
-  decl {int handle(int e);} {}
+  decl {int handle(int e);} {private local
+  }
+  decl {void draw()} {private local
+  }
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
   }
@@ -38,9 +44,72 @@ widget_class Game_Window {
   Fl_Box snoop {
     xywh {160 88 150 332}
   }
+  Fl_Button {} {
+    label Quit
+    callback {Main->show();
+//Game_Window::hide();} selected
+    xywh {425 5 70 20} down_box DOWN_BOX color 36 selection_color 43 labelcolor 26
+  }
 } 
 
 Function {make_window()} {open return_type {Game_Window*}
 } {
   code {return new Game_Window(500,500,"Dancing Game");} {}
+  Fl_Window Main {open
+    xywh {426 325 240 220} type Double hide
+  } {
+    Fl_Button {} {
+      label {Let's Dance!}
+      callback {//Game_Window::position(200,200);
+//Game_Window::show();
+Main->hide();}
+      xywh {15 155 95 20}
+    }
+    Fl_Button {} {
+      label {Wait, What?}
+      callback {Help->position(200,200);
+Help->show();
+Main->hide();}
+      xywh {125 155 95 20}
+    }
+  }
+  Fl_Window Help {open
+    xywh {523 348 300 250} type Double hide
+  } {
+    Fl_Button {} {
+      label {Got It!}
+      callback {Main->position(200,200);
+Main->show();
+Help->hide();}
+      xywh {105 210 70 20}
+    }
+    Fl_Output {} {
+      label {This Game is all about timing! }
+      xywh {249 10 0 25}
+    }
+    Fl_Output {} {
+      label {Make your character dance}
+      xywh {239 36 0 25}
+    }
+    Fl_Output {} {
+      label {by matching the arrow key on screen!}
+      xywh {287 63 0 25}
+    }
+    Fl_Output {} {
+      label {The more you get right,}
+      xywh {226 90 0 25}
+    }
+    Fl_Output {} {
+      label {the faster the arrows will disappear!}
+      xywh {279 117 0 25}
+    }
+    Fl_Output {} {
+      label {But don't make a mistake}
+      xywh {234 144 0 25}
+    }
+    Fl_Output {} {
+      label {or you'll be Booed off stage!}
+      xywh {245 171 0 25}
+    }
+  }
 } 
