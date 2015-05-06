@@ -2,6 +2,7 @@
 
 #include "dance.h"
 #include <FL/Fl_Double_Window.H>
+void startPlaying(); 
 
 void Game_Window::cb_Quit_i(Fl_Button*, void*) {
   Main->show();
@@ -22,7 +23,7 @@ Game_Window::Game_Window(int W, int H, const char *L)
 }
 
 Game_Window::Game_Window()
-  : Fl_Double_Window(0, 0, 500, 525, "Dance Game") {
+  : Fl_Double_Window(0, 0, 500, 500, "Dance Game") {
   clear_flag(16);
   _Game_Window();
 }
@@ -40,6 +41,8 @@ this->when(FL_WHEN_RELEASE);
 { box_background = new Fl_Box(0, 0, 500, 400);
   box_background->color((Fl_Color)48);
 } // Fl_Box* box_background
+{ box_presstostart = new Fl_Box(0, 400, 500, 100);
+} // Fl_Box* box_presstostart
 { box_key = new Fl_Box(210, 410, 80, 80);
 } // Fl_Box* box_key
 { carlton = new Fl_Box(170, 47, 175, 353);

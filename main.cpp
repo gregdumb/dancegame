@@ -11,6 +11,8 @@ Fl_Double_Window* help_win;
 
 // Creates an array of images we will use for our backgrounds
 Fl_JPEG_Image* i_background [2];
+Fl_PNG_Image* i_presstostart;
+Fl_PNG_Image* i_key_bg;
 
 // Arrow key images
 Fl_PNG_Image* i_key_up;
@@ -35,8 +37,14 @@ int Game_Window::handle(int e)
 		// were supposed to press
 		if(Fl::event_key() == expectedKey)
 			correctKeyPressed = true;
+
+		else if(Fl::event_key() == 32) // Key for spacebar
+			startPlaying();
+
 		else
 			incorrectKeyPressed = true;
+
+		std::cout << Fl::event_key() << std::endl;
 	}
 
 	return 0;
@@ -46,6 +54,9 @@ void loadBackgrounds()
 {
 	i_background[0] = new Fl_JPEG_Image("res/bg/bg_1.jpg");
 	i_background[1] = new Fl_JPEG_Image("res/bg/bg_2.jpg");
+	
+	i_presstostart = new Fl_PNG_Image("res/bg/spacebar.png");
+	i_key_bg = new Fl_PNG_Image("res/bg/bg_key.png");
 }
 
 void loadArrowKeys()
@@ -217,14 +228,24 @@ void beginKeypressSequence(void*)
 	setNewTimer();
 }
 
+// Sets up everything we need to play
 void loadGameWindow()
 {
 	loadImages();
 	loadLevel(0);
 
+	game_win->box_presstostart->image(i_presstostart);
+
 	game_win->show();
 
-	Fl::add_timeout(1.0, beginKeypressSequence);
+	//Fl::add_timeout(1.0, beginKeypressSequence);
+}
+
+// When the user presses spacebar, this will start playing the game
+void startPlaying()
+{
+	Fl::add_timeout(0.2, beginKeypressSequence);
+	game_win->box_presstostart->image(i_key_bg);
 }
 
 int main()

@@ -20,15 +20,21 @@ decl {\#include <FL/fl_draw.H>} {public global
 decl {void loadGameWindow()} {public global
 } 
 
+decl {void startPlaying()} {public local
+} 
+
 widget_class Game_Window {
   label {Dance Game} open
-  xywh {237 155 500 525} type Double color 32 hide
-  class Fl_Double_Window
+  xywh {237 183 500 500} type Double color 32
+  class Fl_Double_Window visible
 } {
   decl {int handle(int e);} {private local
   }
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
+  }
+  Fl_Box box_presstostart {selected
+    xywh {0 400 500 100}
   }
   Fl_Box box_key {
     xywh {210 410 80 80}

@@ -8,6 +8,7 @@
 #include <FL/Fl_GIF_Image.H>
 #include <FL/fl_draw.H>
 void loadGameWindow(); 
+extern void startPlaying(); 
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
@@ -22,6 +23,7 @@ private:
   int handle(int e); 
 public:
   Fl_Box *box_background;
+  Fl_Box *box_presstostart;
   Fl_Box *box_key;
   Fl_Box *carlton;
   Fl_Box *justin;
