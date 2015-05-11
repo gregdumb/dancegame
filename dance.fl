@@ -25,7 +25,7 @@ decl {void startPlaying()} {public local
 
 widget_class Game_Window {
   label {Dance Game} open
-  xywh {237 183 500 500} type Double color 32
+  xywh {237 211 500 500} type Double color 32
   class Fl_Double_Window visible
 } {
   decl {int handle(int e);} {private local
@@ -33,7 +33,7 @@ widget_class Game_Window {
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
   }
-  Fl_Box box_presstostart {selected
+  Fl_Box box_presstostart {
     xywh {0 400 500 100}
   }
   Fl_Box box_key {
@@ -62,7 +62,7 @@ widget_class Game_Window {
 Function {make_help_window()} {open
 } {
   Fl_Window Help {
-    xywh {489 333 300 250} type Double hide
+    xywh {489 361 300 250} type Double visible
   } {
     Fl_Button {} {
       label {Got It!}
@@ -111,14 +111,14 @@ Function {make_menu_window()} {open
 } {
   Fl_Window Main {
     label {Main Menu} open
-    xywh {431 358 240 220} type Double visible
+    xywh {431 386 240 220} type Double visible
   } {
     Fl_Button {} {
       label {Let's Dance!}
       callback {//Game_Window::position(200,200);
 //Game_Window::show();
 loadGameWindow();
-Main->hide();}
+Main->hide();} selected
       xywh {15 155 95 20}
     }
     Fl_Button {} {
@@ -127,6 +127,22 @@ Main->hide();}
 Help->show();
 Main->hide();}
       xywh {125 155 95 20}
+    }
+  }
+} 
+
+Function {make_gameover_window()} {open
+} {
+  Fl_Window {} {open
+    xywh {339 213 345 190} type Double visible
+  } {
+    Fl_Output {} {
+      label {Game Over!}
+      xywh {263 58 0 25} box FLAT_BOX labelsize 31
+    }
+    Fl_Button {} {
+      label OK
+      xywh {115 110 110 35}
     }
   }
 } 

@@ -161,6 +161,13 @@ void loadLevel(int levelNum)
 	Fl::add_timeout(10,animate_justin);
 	Fl::add_timeout(20,animate_mj);
 	Fl::add_timeout(30,animate_snoop);
+
+	/*if(levelNum == 0)
+		Fl::add_timeout(0,animate_carlton);
+	else if(levelNum == 1)
+		Fl::add_timeout(0,animate_justin);
+	else if(levelNum == 2)
+		Fl::add_timeout(0,animate_mj);*/
 }
 
 // Changes the arrow on the screen.  Completely randomly chosen,
