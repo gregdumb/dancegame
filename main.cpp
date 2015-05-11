@@ -114,7 +114,7 @@ void animate_carlton(void*)
      game_win->carlton->image(carlton_images[i]);
      game_win->carlton->parent()->redraw();
      i = (i + 1) % carlton_N;
-     Fl::repeat_timeout(1.0/2,animate_carlton);
+     Fl::repeat_timeout(0.05,animate_carlton);
 }
 void animate_justin(void*)
 {
