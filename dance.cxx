@@ -2,7 +2,6 @@
 
 #include "dance.h"
 #include <FL/Fl_Double_Window.H>
-void startPlaying(); 
 
 void Game_Window::cb_Quit_i(Fl_Button*, void*) {
   Main->show();
@@ -125,4 +124,27 @@ Fl_Double_Window* make_menu_window() {
     Main->end();
   } // Fl_Double_Window* Main
   return Main;
+}
+
+Fl_Double_Window *GameOver=(Fl_Double_Window *)0;
+
+static void cb_OK(Fl_Button*, void*) {
+  //gameOverOK();
+GameOver->hide();
+exit(0);
+//Main->show();
+}
+
+Fl_Double_Window* make_gameover_window() {
+  { GameOver = new Fl_Double_Window(345, 190);
+    { Fl_Output* o = new Fl_Output(263, 58, 0, 25, "Game Over!");
+      o->box(FL_FLAT_BOX);
+      o->labelsize(31);
+    } // Fl_Output* o
+    { Fl_Button* o = new Fl_Button(115, 110, 110, 35, "OK");
+      o->callback((Fl_Callback*)cb_OK);
+    } // Fl_Button* o
+    GameOver->end();
+  } // Fl_Double_Window* GameOver
+  return GameOver;
 }

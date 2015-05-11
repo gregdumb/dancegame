@@ -8,6 +8,7 @@
 Game_Window* game_win;
 Fl_Double_Window* menu_win;
 Fl_Double_Window* help_win;
+Fl_Double_Window* gameover_win;
 
 // Creates an array of images we will use for our backgrounds
 Fl_JPEG_Image* i_background [2];
@@ -22,8 +23,8 @@ Fl_PNG_Image* i_key_right;
 
 // These are used for calculating whether or not the right
 // key was pressed.
-bool correctKeyPressed;
-bool incorrectKeyPressed;
+bool correctKeyPressed = false;
+bool incorrectKeyPressed = false;
 int expectedKey = 0;
 
 // When any event happens, this is called.  "e" is the code for
@@ -42,7 +43,10 @@ int Game_Window::handle(int e)
 			startPlaying();
 
 		else
+		{
 			incorrectKeyPressed = true;
+			correctKeyPressed = false;
+		}
 
 		std::cout << Fl::event_key() << std::endl;
 	}
@@ -114,7 +118,7 @@ void animate_carlton(void*)
      game_win->carlton->image(carlton_images[i]);
      game_win->carlton->parent()->redraw();
      i = (i + 1) % carlton_N;
-     Fl::repeat_timeout(.05,animate_carlton);
+     Fl::repeat_timeout(.075,animate_carlton);
 }
 void animate_justin(void*)
 {
@@ -123,7 +127,7 @@ void animate_justin(void*)
      game_win->justin->image(justin_images[i]);
      game_win->justin->parent()->redraw();
      i = (i + 1) % justin_N;
-     Fl::repeat_timeout(.05,animate_justin);
+     Fl::repeat_timeout(.075,animate_justin);
 }
 void animate_mj(void*)
 {
@@ -132,7 +136,7 @@ void animate_mj(void*)
      game_win->mj->image(mj_images[i]);
      game_win->mj->parent()->redraw();
      i = (i + 1) % mj_N;
-     Fl::repeat_timeout(.05,animate_mj);
+     Fl::repeat_timeout(.075,animate_mj);
 }
 void animate_snoop(void*)
 {
@@ -141,7 +145,7 @@ void animate_snoop(void*)
      game_win->snoop->image(snoop_images[i]);
      game_win->snoop->parent()->redraw();
      i = (i + 1) % snoop_N;
-     Fl::repeat_timeout(.05,animate_snoop);
+     Fl::repeat_timeout(.075,animate_snoop);
 }
 // Sets our image variables to actual image files.
 // This will NOT actually set the background of the window
@@ -160,10 +164,7 @@ void loadImages()
 void loadLevel(int levelNum)
 {
 	game_win->box_background->image(i_background[levelNum]);
-	Fl::add_timeout(0,animate_carlton);
-	Fl::add_timeout(10,animate_justin);
-	Fl::add_timeout(20,animate_mj);
-	Fl::add_timeout(30,animate_snoop);
+	
 }
 
 // Changes the arrow on the screen.  Completely randomly chosen,
@@ -211,6 +212,7 @@ void popupRandomArrow()
 		expectedKey = 65363;
 	}
 
+	game_win->box_key->show();
 	game_win->box_key->image(newArrow);
 	game_win->redraw();
 }
@@ -224,6 +226,7 @@ void setNewTimer()
 {
 	correctKeyPressed = false;
 	popupRandomArrow();
+	Fl::remove_timeout(timerExpire);
 	Fl::add_timeout(1.0, timerExpire);
 }
 
@@ -231,8 +234,24 @@ void setNewTimer()
 // if we actually pressed it or not.
 void timerExpire(void*)
 {
-	if(correctKeyPressed && !incorrectKeyPressed)
-		setNewTimer();
+	std::cout << "Correct Key Pressed: " << correctKeyPressed << std::endl;
+		std::cout << "Incorrect Key Pressed: " << incorrectKeyPressed << std::endl;
+
+	if(incorrectKeyPressed)
+	{
+		gameOver();
+	}
+
+	if(correctKeyPressed)
+	{
+ 		setNewTimer();
+		//Fl::repeat_timeout(1.0, timerExpire);
+	}
+	else
+	{	
+		gameOver();
+	}
+	
 }
 
 // For random numbers, c++ needs this, ignore it.
@@ -245,6 +264,7 @@ void initRandomSeed()
 void beginKeypressSequence(void*)
 {
 	setNewTimer();
+	//Fl::add_timeout(1.0, timerExpire);
 }
 
 // Sets up everything we need to play
@@ -265,6 +285,25 @@ void startPlaying()
 {
 	Fl::add_timeout(0.2, beginKeypressSequence);
 	game_win->box_presstostart->image(i_key_bg);
+
+	Fl::add_timeout(0,animate_carlton);
+	Fl::add_timeout(10,animate_justin);
+	Fl::add_timeout(20,animate_mj);
+	Fl::add_timeout(30,animate_snoop);	
+}
+
+void gameOver()
+{
+	/*Fl::remove_timeout(animate_carlton);
+	Fl::remove_timeout(animate_carlton);
+	Fl::remove_timeout(animate_carlton);
+	Fl::remove_timeout(animate_carlton);*/
+
+	game_win->box_presstostart->image(i_presstostart);
+	game_win->box_key->hide();
+
+	game_win->hide();
+	gameover_win->show();
 }
 
 int main()
@@ -276,6 +315,7 @@ int main()
 	menu_win->show();
 
 	help_win = make_help_window();
+	gameover_win = make_gameover_window();
 
         //loadGifs();
 

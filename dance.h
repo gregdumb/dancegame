@@ -8,7 +8,8 @@
 #include <FL/Fl_GIF_Image.H>
 #include <FL/fl_draw.H>
 void loadGameWindow(); 
-extern void startPlaying(); 
+void startPlaying(); 
+void gameOver(); 
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
@@ -39,4 +40,6 @@ Fl_Double_Window* make_help_window();
 Game_Window* make_game_window();
 extern Fl_Double_Window *Main;
 Fl_Double_Window* make_menu_window();
+extern Fl_Double_Window *GameOver;
+Fl_Double_Window* make_gameover_window();
 #endif
