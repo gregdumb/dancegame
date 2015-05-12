@@ -1,8 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0302 
+version 1.0110 
 header_name {.h} 
 code_name {.cxx}
-decl {\#include <FL/Fl_Double_Window.H>} {private global
+decl {\#include <FL/Fl_Double_Window.H>} {global
 } 
 
 decl {\#include <FL/Fl_JPEG_Image.H>} {public global
@@ -31,8 +31,7 @@ widget_class Game_Window {
   xywh {237 239 500 500} type Double color 32
   class Fl_Double_Window visible
 } {
-  decl {int handle(int e);} {private local
-  }
+  decl {int handle(int e);} {}
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
   }
@@ -137,7 +136,7 @@ Main->hide();}
 Function {make_gameover_window()} {open
 } {
   Fl_Window GameOver {open
-    xywh {69 148 345 190} type Double visible
+    xywh {364 196 345 190} type Double visible
   } {
     Fl_Output {} {
       label {Game Over!}
@@ -147,8 +146,8 @@ Function {make_gameover_window()} {open
       label OK
       callback {//gameOverOK();
 GameOver->hide();
-exit(0);
-//Main->show();} selected
+
+//Main->show();}
       xywh {115 110 110 35}
     }
   }
