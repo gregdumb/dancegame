@@ -12,7 +12,6 @@ void startPlaying();
 void gameOver(); 
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
-#include <FL/Fl_Button.H>
 
 class Game_Window : public Fl_Double_Window {
   void _Game_Window();
@@ -30,11 +29,9 @@ public:
   Fl_Box *justin;
   Fl_Box *mj;
   Fl_Box *snoop;
-private:
-  inline void cb_Quit_i(Fl_Button*, void*);
-  static void cb_Quit(Fl_Button*, void*);
 };
 extern Fl_Double_Window *Help;
+#include <FL/Fl_Button.H>
 #include <FL/Fl_Output.H>
 Fl_Double_Window* make_help_window();
 Game_Window* make_game_window();

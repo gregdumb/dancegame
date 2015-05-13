@@ -27,7 +27,7 @@ decl {void gameOver()} {public global
 } 
 
 widget_class Game_Window {
-  label {Dance Game}
+  label {Dance Game} selected
   xywh {237 267 500 500} type Double color 32
   class Fl_Double_Window visible
 } {
@@ -54,18 +54,12 @@ widget_class Game_Window {
   Fl_Box snoop {
     xywh {160 88 150 332}
   }
-  Fl_Button {} {
-    label Quit
-    callback {Main->show();
-//Game_Window::hide();}
-    xywh {425 5 70 20} down_box DOWN_BOX color 36 selection_color 43 labelcolor 26
-  }
 } 
 
 Function {make_help_window()} {open
 } {
   Fl_Window Help {
-    label Help open selected
+    label Help open
     xywh {690 366 300 190} type Double hide
   } {
     Fl_Button {} {
@@ -107,7 +101,7 @@ Function {make_menu_window()} {open
 } {
   Fl_Window Main {
     label {Main Menu} open
-    xywh {431 442 240 220} type Double visible
+    xywh {431 470 240 220} type Double visible
   } {
     Fl_Button {} {
       label {Let's Dance!}
@@ -130,7 +124,7 @@ Main->hide();}
 Function {make_gameover_window()} {open
 } {
   Fl_Window GameOver {open
-    xywh {364 224 345 190} type Double visible
+    xywh {364 252 345 190} type Double visible
   } {
     Fl_Output {} {
       label {Game Over!}

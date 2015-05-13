@@ -2,14 +2,6 @@
 
 #include "dance.h"
 #include <FL/Fl_Double_Window.H>
-
-void Game_Window::cb_Quit_i(Fl_Button*, void*) {
-  Main->show();
-//Game_Window::hide();
-}
-void Game_Window::cb_Quit(Fl_Button* o, void* v) {
-  ((Game_Window*)(o->parent()))->cb_Quit_i(o,v);
-}
 Game_Window::Game_Window(int X, int Y, int W, int H, const char *L)
   : Fl_Double_Window(X, Y, W, H, L) {
   _Game_Window();
@@ -52,13 +44,6 @@ this->when(FL_WHEN_RELEASE);
 } // Fl_Box* mj
 { snoop = new Fl_Box(160, 88, 150, 332);
 } // Fl_Box* snoop
-{ Fl_Button* o = new Fl_Button(425, 5, 70, 20, "Quit");
-  o->down_box(FL_DOWN_BOX);
-  o->color((Fl_Color)36);
-  o->selection_color((Fl_Color)43);
-  o->labelcolor((Fl_Color)26);
-  o->callback((Fl_Callback*)cb_Quit);
-} // Fl_Button* o
 end();
 }
 
