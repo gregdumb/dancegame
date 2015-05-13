@@ -1,8 +1,8 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0110 
+version 1.0302 
 header_name {.h} 
 code_name {.cxx}
-decl {\#include <FL/Fl_Double_Window.H>} {global
+decl {\#include <FL/Fl_Double_Window.H>} {private global
 } 
 
 decl {\#include <FL/Fl_JPEG_Image.H>} {public global
@@ -28,10 +28,11 @@ decl {void gameOver()} {public global
 
 widget_class Game_Window {
   label {Dance Game}
-  xywh {237 239 500 500} type Double color 32
+  xywh {237 267 500 500} type Double color 32
   class Fl_Double_Window visible
 } {
-  decl {int handle(int e);} {}
+  decl {int handle(int e);} {private local
+  }
   Fl_Box box_background {
     xywh {0 0 500 400} color 48
   }
@@ -64,14 +65,15 @@ widget_class Game_Window {
 Function {make_help_window()} {open
 } {
   Fl_Window Help {
-    xywh {489 389 300 250} type Double visible
+    label Help open selected
+    xywh {690 366 300 190} type Double hide
   } {
     Fl_Button {} {
       label {Got It!}
       callback {Main->position(200,200);
 Main->show();
 Help->hide();}
-      xywh {105 210 70 20}
+      xywh {105 152 70 20}
     }
     Fl_Output {} {
       label {This Game is all about timing! }
@@ -86,20 +88,12 @@ Help->hide();}
       xywh {287 63 0 25}
     }
     Fl_Output {} {
-      label {The more you get right,}
-      xywh {226 90 0 25}
-    }
-    Fl_Output {} {
-      label {the faster the arrows will disappear!}
-      xywh {279 117 0 25}
-    }
-    Fl_Output {} {
       label {But don't make a mistake}
-      xywh {234 144 0 25}
+      xywh {234 90 0 25}
     }
     Fl_Output {} {
       label {or you'll be Booed off stage!}
-      xywh {245 171 0 25}
+      xywh {245 117 0 25}
     }
   }
 } 
@@ -113,7 +107,7 @@ Function {make_menu_window()} {open
 } {
   Fl_Window Main {
     label {Main Menu} open
-    xywh {431 414 240 220} type Double visible
+    xywh {431 442 240 220} type Double visible
   } {
     Fl_Button {} {
       label {Let's Dance!}
@@ -136,7 +130,7 @@ Main->hide();}
 Function {make_gameover_window()} {open
 } {
   Fl_Window GameOver {open
-    xywh {364 196 345 190} type Double visible
+    xywh {364 224 345 190} type Double visible
   } {
     Fl_Output {} {
       label {Game Over!}
